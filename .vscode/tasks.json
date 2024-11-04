@@ -2,6 +2,23 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "Create Build Folder",
+            "type": "shell",
+            "command": "mkdir build",
+            "problemMatcher": [],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "runOptions": {
+                "runOn": "folderOpen"
+            },
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "detail": "Create build folder for object and executable files."
+        },
+        {
             "label": "build-debug",
             "type": "shell",
             "command": "gcc",
@@ -34,6 +51,7 @@
                 "kind": "build",
                 "isDefault": false
             },
+            "dependsOn": "Create Build Folder",
             "problemMatcher": ["$gcc"],
             "detail": "Compiles the project with optimizations for final release."
         }

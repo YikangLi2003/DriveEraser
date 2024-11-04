@@ -12,7 +12,7 @@
                 "UNICODE",
                 "_UNICODE"
             ],
-            "compilerPath": "C:/w64devkit/bin/gcc.exe",
+            "compilerPath": "${env:W64DEVKIT_HOME}/bin/gcc.exe",
             "cStandard": "c11",
             "cppStandard": "c++11",
             "intelliSenseMode": "gcc-x64"
