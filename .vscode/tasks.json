@@ -1,0 +1,41 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build-debug",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-g",
+                "-o",
+                "${workspaceFolder}/build/disk_eraser_debug",
+                "${workspaceFolder}/src/*.c",
+                "-I${workspaceFolder}/include"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Compiles the project with debugging information for development."
+        },
+        {
+            "label": "build-release",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-O2",
+                "-o",
+                "${workspaceFolder}/build/disk_eraser",
+                "${workspaceFolder}/src/*.c",
+                "-I${workspaceFolder}/include"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Compiles the project with optimizations for final release."
+        }
+    ]
+}
