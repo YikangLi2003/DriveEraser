@@ -2,23 +2,6 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "create-build-folder",
-            "type": "shell",
-            "command": "mkdir '${workspaceFolder}/build'",
-            "problemMatcher": [],
-            "options": {
-                "cwd": "${workspaceFolder}"
-            },
-            "runOptions": {
-                "runOn": "folderOpen"
-            },
-            "group": "build",
-            "presentation": {
-                "reveal": "silent"
-            },
-            "detail": "Create build folder for object and executable files."
-        },
-        {
             "label": "build-debug",
             "type": "shell",
             "command": "gcc",
