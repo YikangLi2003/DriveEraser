@@ -22,6 +22,8 @@ bool log_message(const char *type, const char *format, ...) {
     FILE *file = fopen(FILENAME, "a");
     
     if (file == NULL) {
+        va_end(args);
+        
         return false;  
     }
 

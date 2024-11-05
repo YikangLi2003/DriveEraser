@@ -2,9 +2,9 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Create Build Folder",
+            "label": "create-build-folder",
             "type": "shell",
-            "command": "mkdir build",
+            "command": "mkdir '${workspaceFolder}/build'",
             "problemMatcher": [],
             "options": {
                 "cwd": "${workspaceFolder}"
@@ -51,7 +51,6 @@
                 "kind": "build",
                 "isDefault": false
             },
-            "dependsOn": "Create Build Folder",
             "problemMatcher": ["$gcc"],
             "detail": "Compiles the project with optimizations for final release."
         }
