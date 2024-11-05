@@ -1,3 +1,7 @@
+# Logs and temporary files
+*.log
+*.tmp
+
 # Prerequisites
 *.d
 

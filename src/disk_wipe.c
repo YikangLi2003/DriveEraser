@@ -3,27 +3,44 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
+#include <time.h>
 
 #include "disk_wipe.h"
 
-typedef uint8_t Block[4096];
+#define ONE_BYTE_SIZE 1
+#define BLOCK_BYTES 4096
+#define BLOCKS_PER_FILE (int)(2LL * 1024 * 1024 * 1024 / BLOCK_BYTES)
 
-#define BLOCKS_PER_FILE (int)(2LL * 1024 * 1024 * 1024 / sizeof(Block))
+
+typedef uint8_t Block[BLOCK_BYTES];
 
 
-void fill_block_randomly(Block block) {
-    for (int i = 0; i < sizeof(Block); i++) {
-        block[i] = (uint8_t)(rand() % 256);
+void fill_block_randomly(Block block, uint32_t *state) {
+    uint32_t x = *state;
+    int i = 0;
+
+    while (i < BLOCK_BYTES) {
+        x ^= x << 13;
+        x ^= x >> 17;
+        x ^= x << 5;
+
+        block[i++] = (uint8_t)(x & 0xff);
+        block[i++] = (uint8_t)((x >> 8) & 0xff);
+        block[i++] = (uint8_t)((x >> 16) & 0xff);
+        block[i++] = (uint8_t)((x >> 24) & 0xff);
     }
+
+    *state = x;
 }
 
 
-bool write_random(FILE *file) {
+bool write_bytes_randomly(FILE *file) {
     Block block;
+    uint32_t random_state = time(NULL);
 
     for (int i = 0; i < BLOCKS_PER_FILE; i++) {
-        fill_block_randomly(block);
-        if (fwrite(block, sizeof(uint8_t), sizeof(Block), file) != sizeof(Block)) {
+        fill_block_randomly(block, &random_state);
+        if (fwrite(block, ONE_BYTE_SIZE, BLOCK_BYTES, file) != BLOCK_BYTES) {
             return false;            
         }
     }
@@ -35,10 +52,10 @@ bool write_random(FILE *file) {
 bool write_bytes(FILE *file, uint8_t byte) {
     Block block;
     
-    memset(block, byte, sizeof(Block));
+    memset(block, byte, BLOCK_BYTES);
 
     for (int i = 0; i < BLOCKS_PER_FILE; i++) {
-        if (fwrite(block, sizeof(uint8_t), sizeof(Block), file) != sizeof(Block)) {
+        if (fwrite(block, ONE_BYTE_SIZE, BLOCK_BYTES, file) != BLOCK_BYTES) {
             return false;
         }
     }
