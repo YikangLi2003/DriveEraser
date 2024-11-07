@@ -5,7 +5,8 @@
 #include <string.h>
 #include <time.h>
 
-#include "disk_wipe.h"
+#include "utils.h"
+#include "core.h"
 
 #define ONE_BYTE_SIZE 1
 #define BLOCK_BYTES 4096
@@ -64,4 +65,6 @@ bool write_2gb(FILE *file, uint8_t byte) {
 }
 
 
-bool fill_disk
+bool fill_driver(Path driver_dir, EraseMode mode) {
+    
+}

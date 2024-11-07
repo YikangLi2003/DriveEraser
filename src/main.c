@@ -5,10 +5,11 @@
 #include <time.h>
 
 #include "log.h"
-#include "disk_wipe.h"
+#include "core.h"
 #include "utils.h"
 
 
+/*
 int main(void) {
     FILE *file_random = fopen("file_random", "wb");
 
@@ -22,6 +23,7 @@ int main(void) {
 
     return 0;
 }
+*/
 
 /*
 int main(void) {
@@ -71,7 +73,7 @@ int main(void) {
 }
 */
 
-/*
+
 int main(void) {
     Path path;
 
@@ -83,7 +85,7 @@ int main(void) {
 
 
 }
-*/
+
 
 /*
 int main(void) {

@@ -7,6 +7,8 @@
 #define LOG_TYPE_ERROR "ERROR"
 #define LOG_TYPE_INPUT "INPUT"
 
-bool log_message(const char *type, const char *format, ...);
+typedef char *LogType;
+
+bool log_message(LogType type, const char *format, ...);
 
 #endif
