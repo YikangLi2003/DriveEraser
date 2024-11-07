@@ -8,7 +8,7 @@
             "args": [
                 "-g",
                 "-o",
-                "${workspaceFolder}/build/disk_eraser_debug",
+                "${workspaceFolder}/build/driver_eraser_debug",
                 "${workspaceFolder}/src/*.c",
                 "-I${workspaceFolder}/include"
             ],
@@ -26,7 +26,7 @@
             "args": [
                 "-O2",
                 "-o",
-                "${workspaceFolder}/build/disk_eraser",
+                "${workspaceFolder}/build/driver_eraser",
                 "${workspaceFolder}/src/*.c",
                 "-I${workspaceFolder}/include"
             ],

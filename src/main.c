@@ -8,22 +8,6 @@
 #include "disk_wipe.h"
 #include "utils.h"
 
-/*
-int main(void) {
-    FILE *file = fopen("file_ones", "wb");
-
-    if (write_bytes(file, 0b11111111)) {
-        printf("Ones file: Success\n");
-    } else {
-        printf("Ones file: Fail\n");
-    }
-
-    fclose(file);
-
-    return 0;
-}
-*/
-
 
 int main(void) {
     FILE *file_random = fopen("file_random", "wb");
@@ -39,6 +23,21 @@ int main(void) {
     return 0;
 }
 
+/*
+int main(void) {
+    FILE *file = fopen("file_ones", "wb");
+
+    if (write_bytes(file, 0b11111111)) {
+        printf("Ones file: Success\n");
+    } else {
+        printf("Ones file: Fail\n");
+    }
+
+    fclose(file);
+
+    return 0;
+}
+*/
 
 /*
 int main(void) {
