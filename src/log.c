@@ -8,7 +8,7 @@
 
 #define FILENAME "disk_eraser.log"
 
-bool log_message(LogType *type, const char *format, ...) {
+bool log_message(LogType type, const char *format, ...) {
     va_list args;
     va_start(args, format);
 

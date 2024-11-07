@@ -4,10 +4,43 @@
 #include <stdlib.h>
 #include <time.h>
 
+#include <string.h>
+
 #include "log.h"
 #include "core.h"
 #include "utils.h"
 
+
+int main(void) {
+    Uuid4 filename;
+    Path path = "C:\\Users\\admin\\Desktop";
+
+    get_uuid4(filename);
+
+    strcat(path, "\\");
+    strcat(path, filename);
+    strcat(path, ".tmp");
+
+    printf("%s", path);
+
+    return 0;
+}
+
+/*
+int main(void) {
+    Uuid4 *uuid_array = malloc(sizeof(Uuid4) * 64);
+    
+    for (int i = 0; i < 64; i++) {
+        get_uuid4(uuid_array[i]);
+    }
+
+    for (int i = 0; i < 64; i++) {
+        printf("%s\n", uuid_array[i]);
+    }
+
+    return 0;
+}
+*/
 
 /*
 int main(void) {
@@ -73,7 +106,7 @@ int main(void) {
 }
 */
 
-
+/*
 int main(void) {
     Path path;
 
@@ -85,7 +118,7 @@ int main(void) {
 
 
 }
-
+*/
 
 /*
 int main(void) {
