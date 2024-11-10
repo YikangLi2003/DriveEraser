@@ -4,13 +4,33 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include <string.h>
+#include "uuid4.h"
 
-#include "log.h"
-#include "core.h"
-#include "utils.h"
+int main(void) {
+    Uuid4List list;
+    Uuid4 buffer;
+
+    init_uuid4_list(&list);
+
+    for (int i = 0; i < 132; i++) {
+        get_uuid4(buffer);
+        store_uuid4(&list, buffer);
+        printf("New uuid4: %s\n", buffer);
+        printf("List capacity: %d\n", list.capacity);
+        printf("List length: %d\n", list.length);
+        for (int j = 0; j < list.length; j++) {
+            printf("%d: %s\n", j, list.elements[j]);
+        }
+        printf("\n");
+    }
+
+    free_uuid4_list(&list);
+
+    printf("Program end.");
+}
 
 
+/*
 int main(void) {
     Uuid4 filename;
     Path path = "C:\\Users\\admin\\Desktop";
@@ -25,6 +45,7 @@ int main(void) {
 
     return 0;
 }
+*/
 
 /*
 int main(void) {
