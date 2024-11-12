@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdarg.h>
+#include <string.h>
 #include <time.h>
 
 #include "log.h"

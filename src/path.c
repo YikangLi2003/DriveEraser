@@ -24,10 +24,11 @@ bool input_path(Path path) {
 
 
 bool build_full_file_path(Path result, const Path dir_path, const Uuid4 filename) {
-    if ((strlen(result) + strlen(dir_path) + strlen(filename)) >= sizeof(Path)) {
+    if ((strlen(dir_path) + strlen(filename)) >= sizeof(Path)) {
         return false;
     }
 
+    strcpy(result, "");
     strcat(result, dir_path);
     strcat(result, "/");
     strcat(result, filename);

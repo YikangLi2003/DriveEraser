@@ -32,5 +32,5 @@ void fill_block_all_zeros(Block block) {
 
 
 void fill_block_all_ones(Block block) {
-    memset(block, BYTE_ALL_ONE, sizeof(4096));
+    memset(block, BYTE_ALL_ONE, sizeof(Block));
 }
