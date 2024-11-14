@@ -3,9 +3,8 @@
 
 #include "uuid4.h"
 
-typedef char Path[4096];
+typedef char Path[260];
 
-bool input_path(Path path);
-bool build_full_file_path(Path result, const Path dir_path, const Uuid4 filename);
+void build_full_file_path(Path result, const char drive_letter, const Uuid4 filename);
 
 #endif

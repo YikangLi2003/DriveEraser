@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
+#include <time.h>
 
 #include "uuid4.h"
 
@@ -9,6 +10,8 @@
 
 
 void get_uuid4(Uuid4 uuid) {
+    srand(time(NULL));
+
     for (int i = 0; i < sizeof(Uuid4) / sizeof(char); i++) {
         switch (i) {
             case 8:

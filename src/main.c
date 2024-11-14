@@ -1,8 +1,4 @@
 #include <stdio.h>
-#include <stdint.h>
-#include <stdbool.h>
-#include <stdlib.h>
-#include <time.h>
 
 #include "uuid4.h"
 #include "log.h"
@@ -11,12 +7,19 @@
 #include "writer.h"
 
 
+int main(int argc, char *argv[]) {
+    Uuid4 uuid;
+    Path path;
 
-int main(void) {
+    get_uuid4(uuid);
+    build_full_file_path(path, 'd', uuid);
 
+    printf("%s", path);
 
     return 0;
 }
+
+// 参数解析：擦除流程 是否记录log文件 是否在最后删除占位文件
 
 
 /*

@@ -1,6 +1,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
 #include "path.h"
 #include "uuid4.h"
@@ -8,32 +9,15 @@
 #define TEMP_FILE_EXTENSION ".tmp"
 
 
-bool input_path(Path path) {
-    if (fgets(path, sizeof(Path) / sizeof(char), stdin) != NULL) {
-        size_t length = strlen(path);
-        
-        if (length > 0 && path[length - 1] == '\n') {
-            path[length - 1] = '\0';
-        }
+void build_full_file_path(Path result, const char drive_letter, const Uuid4 filename) {
+    char letter[3];
 
-        return true;
-    }
+    letter[0] = toupper(drive_letter);
+    letter[1] = ':';
+    letter[2] = '\0';
 
-    return false;
-}
-
-
-bool build_full_file_path(Path result, const Path dir_path, const Uuid4 filename) {
-    if ((strlen(dir_path) + strlen(filename)) >= sizeof(Path)) {
-        return false;
-    }
-
-    strcpy(result, "");
-    strcat(result, dir_path);
-    strcat(result, "/");
+    strcpy(result, letter);
+    strcat(result, "\\");
     strcat(result, filename);
-    strcat(result, "/");
     strcat(result, TEMP_FILE_EXTENSION);
-
-    return true;
 }
