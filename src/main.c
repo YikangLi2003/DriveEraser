@@ -11,15 +11,15 @@
 #include "writer.h"
 
 
-/*
+
 int main(void) {
 
 
     return 0;
 }
-*/
 
 
+/*
 int main(void) {
     Block all_ones;
     Block all_zeros;
@@ -49,7 +49,7 @@ int main(void) {
 
     return 0;
 }
-
+*/
 
 /*
 int main(void) {

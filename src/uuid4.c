@@ -4,7 +4,6 @@
 
 #include "uuid4.h"
 
-
 #define UUID4_CHARSET "0123456789abcdef"
 #define UUID4_LIST_INIT_CAPACITY 64
 
