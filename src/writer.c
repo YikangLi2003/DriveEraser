@@ -25,7 +25,7 @@ bool write_file_randomly(FILE *file) {
 }
 
 
-bool write_file(FILE *file, Block block) {
+bool write_file(FILE *file, const Block block) {
     for (int i = 0; i < BLOCKS_PER_FILE_2GB; i++) {
         if (fwrite(block, BYTE_SIZE, sizeof(Block), file) != sizeof(Block)) {
             return false;

@@ -9,7 +9,7 @@
 #define TEMP_FILE_EXTENSION ".tmp"
 
 
-void build_full_file_path(Path result, const char drive_letter, const Uuid4 filename) {
+void build_full_file_path(Path result, char drive_letter, const Uuid4 filename) {
     char letter[3];
 
     letter[0] = toupper(drive_letter);

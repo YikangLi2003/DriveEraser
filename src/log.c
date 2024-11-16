@@ -15,11 +15,11 @@ typedef char LogTimestamp[20];
 
 
 static bool get_log_timestamp(LogTimestamp buffer);
-static void print_log(LogType type, LogTimestamp timestamp, const char *format, va_list args);
-static bool save_log(LogType type, LogTimestamp timestamp, const char *format, va_list args);
+static void print_log(const LogType type, LogTimestamp timestamp, const char *format, va_list args);
+static bool save_log(const LogType type, LogTimestamp timestamp, const char *format, va_list args);
 
 
-bool log_message(LogType type, const char *format, ...) {
+bool log_message(const LogType type, bool log_to_file, const char *format, ...) {
     va_list args;
     va_start(args, format);
 
@@ -27,8 +27,11 @@ bool log_message(LogType type, const char *format, ...) {
     get_log_timestamp(timestamp);
 
     print_log(type, timestamp, format, args);
-    save_log(type, timestamp, format, args);
 
+    if (log_to_file) {
+        save_log(type, timestamp, format, args);
+    }
+    
     va_end(args);
 
     return true;
@@ -49,14 +52,14 @@ static bool get_log_timestamp(LogTimestamp buffer) {
 }
 
 
-static void print_log(LogType type, LogTimestamp timestamp, const char *format, va_list args) {
+static void print_log(const LogType type, LogTimestamp timestamp, const char *format, va_list args) {
     printf("[%s %s] ", type, timestamp);
     vprintf(format, args);
     printf("\n");
 }
 
 
-static bool save_log(LogType type, LogTimestamp timestamp, const char *format, va_list args) {
+static bool save_log(const LogType type, LogTimestamp timestamp, const char *format, va_list args) {
     FILE *file = fopen(LOG_FILENAME, "a");
     
     if (file == NULL) {        
