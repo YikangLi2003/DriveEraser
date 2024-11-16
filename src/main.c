@@ -10,9 +10,10 @@
 int main(int argc, char *argv[]) {
     Uuid4 uuid;
     Path path;
+    Path dir = "C:\\Users\\ethan\\desktop";
 
     get_uuid4(uuid);
-    build_full_file_path(path, 'd', uuid);
+    build_full_file_path(path, dir, uuid);
 
     printf("%s", path);
 

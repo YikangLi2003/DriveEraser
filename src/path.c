@@ -9,15 +9,16 @@
 #define TEMP_FILE_EXTENSION ".tmp"
 
 
-void build_full_file_path(Path result, char drive_letter, const Uuid4 filename) {
-    char letter[3];
+bool build_full_file_path(Path result, const Path erase_dir, const Uuid4 filename) {
+    if (strlen(erase_dir) + strlen("/") + strlen(filename) + strlen(TEMP_FILE_EXTENSION) >= sizeof(Path) / sizeof(char)) {
+        return false;
+    }
 
-    letter[0] = toupper(drive_letter);
-    letter[1] = ':';
-    letter[2] = '\0';
-
-    strcpy(result, letter);
-    strcat(result, "\\");
+    strcpy(result, "");
+    strcat(result, erase_dir);
+    strcat(result, "/");
     strcat(result, filename);
     strcat(result, TEMP_FILE_EXTENSION);
+
+    return true;
 }

@@ -16,25 +16,43 @@
 #define OPTION_SHORT_KEEP_ERASE_FILES "-k"
 #define OPTION_LONG_KEEP_ERASE_FILES "--keep-erase-files"
 
+#define OPTION_SHORT_HELP "-h"
+#define OPTION_LONG_HELP "--help"
+
 
 typedef struct {
     char drive_letter;
     char erase_sequence[12];
-    bool log_to_file;
-    bool remove_erase_files;
+    bool no_log_file;
+    bool keep_erase_files;
+    bool show_help;
+    bool are_args_valid;
 } Arguments;
 
 
-void configure_arguments(int argc, char *argv[], Arguments *arguments) {
+void config_args(Arguments *arguments, int argc, char *argv[]) {
+
+}
+
+
+void init_args(Arguments *arguments) {
+    arguments->drive_letter = '\0';
+
     for (int i = 0; i < sizeof(arguments->erase_sequence) / sizeof(char); i++) {
         arguments->erase_sequence[i] = '\0';
     }
 
-    arguments->erase_sequence[0] = ARGUMENT_ERASE_MODE_ALL_ZERO;
-    arguments->erase_sequence[1] = ARGUMENT_ERASE_MODE_ALL_ONE;
-    arguments->erase_sequence[2] = ARGUMENT_ERASE_MODE_RANDOM;
-    arguments->log_to_file = true;
-    arguments->remove_erase_files = true;
+    arguments->no_log_file = false;
+    arguments->keep_erase_files = false;
+    arguments->show_help = false;
+    arguments->are_args_valid = false;
+}
 
-    // -l 
+
+void set_drive_letter(Arguments *arguments, int argc, char *argv[]) {
+    
+}
+
+void verify_args(Arguments *arguments) {
+
 }

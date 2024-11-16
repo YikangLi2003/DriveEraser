@@ -5,6 +5,6 @@
 
 typedef char Path[260];
 
-void build_full_file_path(Path result, const char drive_letter, const Uuid4 filename);
+bool build_full_file_path(Path result, const Path erase_dir, const Uuid4 filename);
 
 #endif
