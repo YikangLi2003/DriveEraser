@@ -5,8 +5,18 @@
 #include "block.h"
 #include "path.h"
 #include "writer.h"
+#include "configurator.h"
 
 
+int main(int argc, char *argv[]) {
+    Arguments arguments;
+
+    init_args(&arguments);
+
+    // args to string
+}
+
+/*
 int main(int argc, char *argv[]) {
     Uuid4 uuid;
     Path path;
@@ -19,8 +29,7 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
-
-// 参数解析：擦除流程 是否记录log文件 是否在最后删除占位文件
+*/
 
 
 /*

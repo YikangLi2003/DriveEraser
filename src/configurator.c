@@ -2,6 +2,8 @@
 #include <string.h>
 #include <ctype.h>
 
+#include "configurator.h"
+
 #define OPTION_SHORT_DRIVE_LETTER "-d"
 #define OPTION_LONG_DRIVE_LETTER "--drive"
 
@@ -21,34 +23,9 @@
 #define OPTION_SHORT_HELP "-h"
 #define OPTION_LONG_HELP "--help"
 
-#define ERASE_SEQUENCE_LENGTH 12
 
-
-typedef struct {
-    char drive_letter;
-    char erase_sequence[ERASE_SEQUENCE_LENGTH + 1];
-    bool no_log_file;
-    bool keep_erase_files;
-    bool show_help;
-    bool are_args_valid;
-} Arguments;
-
-
-void config_args(Arguments *arguments, int argc, const char *argv[]) {
-
-}
-
-
-void argv_to_lower(int argc, const char *argv[]) {
-    for (int i = 0; i < argc; i++) {
-        char *arg = argv[i];
-
-        for (int j = 0; arg[j] != '\0'; j++) {
-            if (isalpha(arg[j])) {
-                arg[j] = tolower(arg[j]);
-            }
-        }
-    }
+void config_args(Arguments *arguments, int argc, char *argv[]) {
+    return;
 }
 
 
@@ -62,7 +39,7 @@ void init_args(Arguments *arguments) {
 }
 
 
-void set_drive_letter(Arguments *arguments, int argc, const char *argv[]) {
+void set_drive_letter(Arguments *arguments, int argc, char *argv[]) {
     for (int i = 0; i < argc; i++) {
         if (
             (strcmp(OPTION_SHORT_DRIVE_LETTER, argv[i]) ||
@@ -79,7 +56,7 @@ void set_drive_letter(Arguments *arguments, int argc, const char *argv[]) {
 }
 
 
-void set_erase_sequence(Arguments *arguments, int argc, const char *argv[]) {
+void set_erase_sequence(Arguments *arguments, int argc, char *argv[]) {
     for (int i = 0; i < argc; i++) {
         if (
             (strcmp(OPTION_SHORT_ERASE_SEQUENCE, argv[i]) ||
@@ -98,7 +75,7 @@ void set_erase_sequence(Arguments *arguments, int argc, const char *argv[]) {
 }
 
 
-void set_boolean_flags(Arguments *arguments, int argc, const char *argv[]) {
+void set_boolean_flags(Arguments *arguments, int argc, char *argv[]) {
     for (int i = 0; i < argc; i++) {
         if (
             strcmp(OPTION_SHORT_NO_LOG_FILE, argv[i]) ||
